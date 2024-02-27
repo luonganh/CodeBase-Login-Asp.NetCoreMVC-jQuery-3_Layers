@@ -1,6 +1,3 @@
-using Asp.NetCore.Web.Admin.Extensions;
-using static Asp.NetCore.Shared.Utilities;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -35,8 +32,19 @@ loggerFactory.AddFile($"{path}\\Logs\\Log.txt");
 
 app.UseAuthorization();
 
+// Exception handler middleware
+app.UseMiddleware<ExceptionHandlerMiddleware>();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+await using (var scope = app.Services.CreateAsyncScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+    var roleManager = scope.ServiceProvider.GetService(typeof(RoleManager<AppRole>)) as RoleManager<AppRole>;
+    var userManager = (UserManager<AppUser>)scope.ServiceProvider.GetService(typeof(UserManager<AppUser>));
+    await new DataSeeder(roleManager, userManager, context).SeedAsync();
+}
 
 app.Run();

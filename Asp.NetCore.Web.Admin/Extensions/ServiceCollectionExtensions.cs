@@ -1,4 +1,6 @@
-﻿namespace Asp.NetCore.Web.Admin.Extensions
+﻿using Asp.NetCore.Infrastructure.Identity.DataSeed;
+
+namespace Asp.NetCore.Web.Admin.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -15,7 +17,7 @@
             // services.AddDbContext<EXAMPLE_Context>();
 
             services.AddScoped(typeof(DbContext), typeof(IdentityContext));
-            
+            services.AddScoped<IDataSeeder, DataSeeder>();
             return services;
         }
 

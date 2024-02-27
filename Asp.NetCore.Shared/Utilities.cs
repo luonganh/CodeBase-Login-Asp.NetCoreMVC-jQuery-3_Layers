@@ -12,7 +12,7 @@
             public const string AccessUrls = "AccessUrls";
         }
 
-        public class AppRole
+        public class Role
         {
             public const string Admin = "Admin";
             public const string Rico = "Rico";

@@ -9,3 +9,4 @@ global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.Configuration;
 global using System.ComponentModel.DataAnnotations;
 global using static Asp.NetCore.Shared.Utilities;
+global using Asp.NetCore.Shared;

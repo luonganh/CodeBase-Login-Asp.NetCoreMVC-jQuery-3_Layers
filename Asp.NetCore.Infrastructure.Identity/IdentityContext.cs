@@ -1,14 +1,14 @@
 ﻿namespace Asp.NetCore.Infrastructure.Identity
 {
-    public class IdentityContext : IdentityDbContext<Entities.AppUser, Entities.AppRole, Guid>
+    public class IdentityContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {
 
         }
 
-        public DbSet<Entities.AppRole> AppRoles { set; get; }
-        public DbSet<Entities.AppUser> AppUsers { set; get; }
+        public DbSet<AppRole> AppRoles { set; get; }
+        public DbSet<AppUser> AppUsers { set; get; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
