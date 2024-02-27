@@ -1,8 +1,8 @@
 ﻿namespace Asp.NetCore.Infrastructure.Identity.EntityConfigurations
 {
-    public class AppRoleConfiguration : IEntityTypeConfiguration<AppRole>
+    public class AppRoleConfiguration : IEntityTypeConfiguration<Entities.AppRole>
     {
-        public void Configure(EntityTypeBuilder<AppRole> builder)
+        public void Configure(EntityTypeBuilder<Entities.AppRole> builder)
         {
             builder.ToTable("AppRoles");
             builder.HasKey(x => x.Id);
