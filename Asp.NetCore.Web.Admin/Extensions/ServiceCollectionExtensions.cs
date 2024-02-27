@@ -1,12 +1,4 @@
-﻿using Asp.NetCore.Infrastructure.Identity;
-using Asp.NetCore.Infrastructure.Identity.Entities;
-using Asp.NetCore.Services.Identity;
-using Asp.NetCore.Shared;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System.Data;
-
-namespace Asp.NetCore.Web.Admin.Extensions
+﻿namespace Asp.NetCore.Web.Admin.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -53,8 +45,15 @@ namespace Asp.NetCore.Web.Admin.Extensions
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
-            
-            services.AddTransient<IIdentityService, IdentityService>();
+
+            // services.AddTransient<IIdentityService, IdentityService>();
+
+            // autoregister DI
+            var assemblyToScan = Assembly.GetAssembly(typeof(IBaseService));
+            services.RegisterAssemblyPublicNonGenericClasses(assemblyToScan)
+                .Where(c => c.Name.EndsWith("Service") || c.Name.EndsWith("Services"))
+                .AsPublicImplementedInterfaces();
+                       
             return services;           
         }
     }

@@ -1,4 +1,13 @@
-﻿global using Serilog;
+﻿global using Asp.NetCore.Infrastructure.Identity;
+global using Asp.NetCore.Infrastructure.Identity.Entities;
+global using Asp.NetCore.Services;
+global using Asp.NetCore.Shared;
 global using Asp.NetCore.Web.Admin.Models;
+global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using NetCore.AutoRegisterDi;
+global using Serilog;
+global using System.Data;
 global using System.Diagnostics;
+global using System.Reflection;
