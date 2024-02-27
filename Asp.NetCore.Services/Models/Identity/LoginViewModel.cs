@@ -1,4 +1,4 @@
-﻿namespace Asp.NetCore.Web.Admin.Models
+﻿namespace Asp.NetCore.Services.Models.Identity
 {
     public class LoginViewModel
     {
