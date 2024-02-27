@@ -67,6 +67,25 @@
             //    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
             //});
 
+            // Cross-Origin Resource Sharing
+            // All
+            services.AddCors(options => options.AddPolicy(Utilities.AppSettings.CorsPolicy, builder =>
+            {
+                builder.AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowAnyOrigin();
+            }));
+            //// Custom 
+            //services.AddCors(options =>
+            //{
+            //    var corsPolicy = configuration[$"{AppSettings.CorsPolicy}:{AppSettings.AccessUrls}"].Split(',');
+            //    options.AddPolicy(AppSettings.CorsPolicy, builder => builder.WithOrigins(corsPolicy)
+            //        .SetIsOriginAllowedToAllowWildcardSubdomains()
+            //        .WithMethods("GET", "POST", "DELETE", "OPTIONS")
+            //        .AllowCredentials()
+            //        .AllowAnyHeader());
+            //});
+
             return services;           
         }
     }
