@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="EntityConfigurations\" />
-    <Folder Include="Enums\" />
     <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
