@@ -53,7 +53,20 @@
             services.RegisterAssemblyPublicNonGenericClasses(assemblyToScan)
                 .Where(c => c.Name.EndsWith("Service") || c.Name.EndsWith("Services"))
                 .AsPublicImplementedInterfaces();
-                       
+
+            // System.Text.JSON, formatting is camelCase
+            services.AddControllersWithViews()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+                });
+            //// Add Newtonsoft.Json-based JSON format support and the default formatting is camelCase
+            //services.AddControllers().AddNewtonsoftJson().AddJsonOptions(options =>
+            //{
+            //    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+            //});
+
             return services;           
         }
     }
