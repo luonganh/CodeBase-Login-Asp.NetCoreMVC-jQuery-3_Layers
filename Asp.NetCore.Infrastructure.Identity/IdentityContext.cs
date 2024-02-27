@@ -30,7 +30,7 @@
     {
         public IdentityContext CreateDbContext(string[] args)
         {
-            // get path of assembly that contains appsettings json files
+            // get path of assembly that contains appsettings json files            
             var basePath = Path.Combine(Directory.GetCurrentDirectory(), "../Asp.NetCore.Web.Admin");
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -43,7 +43,9 @@
                 reloadOnChange: true)
             .Build();
 
-            throw new NotImplementedException();
+            DbContextOptionsBuilder<IdentityContext> builder = new DbContextOptionsBuilder<IdentityContext>();
+            builder.UseSqlServer(configuration.GetConnectionString(AppSettings.ConnectionString)).EnableDetailedErrors();
+            return new IdentityContext(builder.Options);
         }
     }
 }
