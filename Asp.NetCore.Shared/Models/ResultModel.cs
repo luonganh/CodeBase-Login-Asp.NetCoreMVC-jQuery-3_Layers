@@ -2,6 +2,7 @@
 {
     public class ResultModel
     {
+        public bool? Success { get; set; }
         public string? Message { get; set; }
         public int? Code { get; set; }
         public object? Data { get; set; }
@@ -19,24 +20,28 @@
             Data = data;
         }
 
-        public ResultModel(int code, T data)
+        public ResultModel(bool? success, int code, T data)
         {
+            Success = success;
             Code = code;
             Data = data;
         }
 
-        public ResultModel(int code, string message)
+        public ResultModel(bool? success, int code, string message)
         {
+            Success = success;
             Code = code;
             Message = message;
         }
 
-        public ResultModel(int code, string message, T data)
+        public ResultModel(bool? success, int code, string message, T data)
         {
+            Success = success;
             Code = code;
             Message = message;
             Data = data;
         }
+        public bool? Success { get; set; }
         public string? Message { get; set; }
         public int? Code { get; set; }
         public T Data { get; set; }
